@@ -1,3 +1,7 @@
+<?php
+include("../includes/connect.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,29 +38,38 @@
     
         <!-- categories -->
 
-        <div class="form-outline w-50 m-auto">
-    <select name="product_category"  class="form-select w-100 mb-4">
+        <div class="form-outline w-50 m-auto h-10">
+    <select name="product_category"  class="form-select w-100 mb-4 p-1">
         <option value="">Select a category</option>
-        <option value="">category1</option>
-        <option value="">category2</option>
-        <option value="">category3</option>
-        <option value="">category4</option>
-        <option value="">category5</option>
-        <option value="">category6</option>
+
+        <?php
+        $select_query="Select * from `categories`";
+        $result_query=mysqli_query($con,$select_query);
+        while($row=mysqli_fetch_assoc($result_query)){
+            $category_title=$row['category_title'];
+            $category_id=$row['category_id'];
+            echo "<option value='$category_id'> $category_title </option>";
+        }
+        
+    ?>
     </select>
     </div>
 
             <!-- Brands -->
 
     <div class="form-outline w-50 m-auto">
-    <select name="product_brands"  class="form-select w-100 mb-3">
+    <select name="product_brands"  class="form-select w-100 mb-3 p-1">
         <option value="">Select a Brands</option>
-        <option value="">Brand1</option>
-        <option value="">Brand2</option>
-        <option value="">Brand3</option>
-        <option value="">Brand4</option>
-        <option value="">Brand5</option>
-        <option value="">Brand6</option>
+        <?php
+        $select_query="Select * from `brands`";
+        $result_query=mysqli_query($con,$select_query);
+        while($row=mysqli_fetch_assoc($result_query)){
+            $brand_title=$row['brand_title'];
+            $brand_id=$row['brand_id'];
+            echo "<option value='$brand_id'> $brand_title </option>";
+        }
+        
+    ?>
     </select>
     </div>
 
