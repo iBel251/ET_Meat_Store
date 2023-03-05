@@ -1,5 +1,4 @@
 <?php
-
 include('../includes/connect.php');
 if (isset($_POST['insert_product'])) {
     php code here
@@ -38,6 +37,7 @@ if (isset($_POST['insert_product'])) {
 
             <!-- Keywords -->
 
+
             <div class="form-outline pb-4 w-50 m-auto">
                 <label for="product_Keywords" class="forml-abel">Product Keywords</label>
                 <input type="text" name="product_Keywords" id="product_Keywords" class="form-control" placeholder="Enter product title" autocomplete="off" require="required">
@@ -70,6 +70,49 @@ if (isset($_POST['insert_product'])) {
                     <option value="">Brand6</option>
                 </select>
             </div>
+
+    <div class="form-outline pb-4 w-50 m-auto">
+        <label for="product_Keywords" class="forml-abel">Product Keywords</label>
+    <input type="text" name="product_Keywords" id="product_Keywords" class="form-control" placeholder="Enter product title" autocomplete="off" require="required">  
+    </div>
+    
+        <!-- categories -->
+
+        <div class="form-outline w-50 m-auto h-10">
+    <select name="product_category"  class="form-select w-100 mb-4 p-1">
+        <option value="">Select a category</option>
+
+        <?php
+        $select_query="Select * from `categories`";
+        $result_query=mysqli_query($con,$select_query);
+        while($row=mysqli_fetch_assoc($result_query)){
+            $category_title=$row['category_title'];
+            $category_id=$row['category_id'];
+            echo "<option value='$category_id'> $category_title </option>";
+        }
+        
+    ?>
+    </select>
+    </div>
+
+            <!-- Brands -->
+
+    <div class="form-outline w-50 m-auto">
+    <select name="product_brands"  class="form-select w-100 mb-3 p-1">
+        <option value="">Select a Brands</option>
+        <?php
+        $select_query="Select * from `brands`";
+        $result_query=mysqli_query($con,$select_query);
+        while($row=mysqli_fetch_assoc($result_query)){
+            $brand_title=$row['brand_title'];
+            $brand_id=$row['brand_id'];
+            echo "<option value='$brand_id'> $brand_title </option>";
+        }
+        
+    ?>
+    </select>
+    </div>
+
 
             <!-- image1 -->
 
