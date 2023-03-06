@@ -47,7 +47,7 @@ function get_unique_brands(){
   global $con;
   if(isset($_GET['brand'])){
   $brand_id=$_GET['brand'];
-  $select_query="Select * from `products` where category_id=$brand_id";
+  $select_query="Select * from `products` where brand_id=$brand_id";
   $result_query=mysqli_query($con,$select_query);
   $num_of_rows=mysqli_num_rows($result_query);
   if($num_of_rows==0){
@@ -119,7 +119,7 @@ function getBrands(){
     global $con;
     $select_brands = "Select * from `brands`";
     $result_brands = mysqli_query($con, $select_brands);
-    $row_data = mysqli_fetch_assoc($result_brands);
+    //$row_data = mysqli_fetch_assoc($result_brands);
 
     while ($row_data = mysqli_fetch_assoc($result_brands)) {
       $brand_title = $row_data['brand_title'];
@@ -134,7 +134,7 @@ function getCategories(){
     global $con;
     $select_categories = "Select * from `categories`";
     $result_categories = mysqli_query($con, $select_categories);
-    $row_data = mysqli_fetch_assoc($result_categories);
+    //$row_data = mysqli_fetch_assoc($result_categories);
 
     while ($row_data = mysqli_fetch_assoc($result_categories)) {
       $category_title = $row_data['category_title'];
