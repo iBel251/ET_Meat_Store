@@ -49,9 +49,9 @@ include('functions/common_function.php');
             </li>
 
           </ul>
-          <form class="form-inline my-2 my-lg-0" action="search_product.php" method="get">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
-            <input type="submit" value="search" class="btn btn-outline-light" name="search_data_product">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
     </nav>
@@ -84,11 +84,9 @@ include('functions/common_function.php');
 
         <!-- fetching products -->
         <?php
-        getProducts();
+        get_all_products();
         get_unique_categories();
         get_unique_brands();
-        // $ip = getIpAddress();
-        // echo "user real IP Address is ".$ip;
         ?>
 
       </div>
@@ -105,7 +103,7 @@ include('functions/common_function.php');
         <?php
         getBrands();
         ?>
-
+        
       </ul>
       <!-- catagories to be displayed -->
       <ul class="navbar-nav me-auto">
@@ -125,10 +123,10 @@ include('functions/common_function.php');
 
   </div>
 
-  <!-- include footer -->
-  <?php
-  include("./includes/footer.php");
-  ?>
+<!-- include footer -->
+<?php
+    include("./includes/footer.php");
+?>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>
