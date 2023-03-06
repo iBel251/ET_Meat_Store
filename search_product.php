@@ -49,7 +49,7 @@ include('functions/common_function.php');
             </li>
 
           </ul>
-          <form class="form-inline my-2 my-lg-0" action="search_product.php" method="get">
+          <form class="form-inline my-2 my-lg-0" action="" method="get">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
             <input type="submit" value="search" class="btn btn-outline-light" name="search_data_product">
           </form>
@@ -84,11 +84,9 @@ include('functions/common_function.php');
 
         <!-- fetching products -->
         <?php
-        getProducts();
+        search_product();
         get_unique_categories();
         get_unique_brands();
-        // $ip = getIpAddress();
-        // echo "user real IP Address is ".$ip;
         ?>
 
       </div>
