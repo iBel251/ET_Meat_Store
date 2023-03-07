@@ -78,14 +78,13 @@ session_start();
         </li>";
         }
                 if(!isset($_SESSION['username'])){
-                    echo ' <li class="nav-item">
-                    <a class="nav-link" href="./user_area/user_login.php">Login</a>
-                </li>';
+                    echo " <li class='nav-item'>
+                    <a class='nav-link' href='./user_area/user_login.php'>Login</a>
+                </li>";
                 }
                 else {
-                    echo ' <li class="nav-item">
-                    <a class="nav-link" "./user_area/logout.php">Logout</a>
-                </li>';
+                    echo" <li class='nav-item'><a class='nav-link' href='./user_area/logout.php'>Logout</a>
+                </li>";
                 }
                 ?>
       </ul>
