@@ -17,3 +17,8 @@ footer {
 #category_select {
   width: 100%;
 }
+
+.cart-img {
+  width: 80px;
+  height: 80px;
+}
