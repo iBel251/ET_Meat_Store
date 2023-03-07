@@ -98,6 +98,19 @@ if (isset($_POST['user_register'])) {
             die(mysqli_error($con));
         }
     }
+   // selecting cart intl_get_error_message 
+
+   $select_cart_items="Select * from `cart_details` where ip_address='$user_ip'";
+   $result_cart=mysqli_query($con,$select_cart_items);
+   $rows_count = mysqli_num_rows($result_cart);
+   if($rows_count>0){
+    $_SESSION['username']=$user_username;
+    echo "<script>alert('You have items in your cart')</script>";
+    echo "<script>window.open('checkout.php','_self')</script>";
+  }
+  else {
+    echo "<script>window.open('index.php.php','_self')</script>";
+  }
 }
 
 ?>
