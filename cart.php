@@ -42,19 +42,23 @@ include('functions/common_function.php');
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>1</sup></a>
+              <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php
+              cart_item();
+              ?></sup></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Total Price:<?php total_cart_price();?>/-</a>
             </li>
 
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-          </form>
+
         </div>
     </nav>
+    <!-- calling function cart -->
+    <?php
+    cart();    
+    ?>
+
     <!-- Second child -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
@@ -74,59 +78,46 @@ include('functions/common_function.php');
     <h3 class="text-center">ETAnmial Products</h3>
     <p class="text-center">A place where you can find quality animal products</p>
   </div>
-
-  <!-- Forth child -->
-
-  <div class="row">
-    <div class="col-md-10">
-      <!-- Products -->
-      <div class="row">
-
-        <!-- fetching products -->
-        <?php
-        get_all_products();
-        get_unique_categories();
-        get_unique_brands();
-        ?>
-
-      </div>
+<!-- Forth chikd table -->
+<div class="container">
+    <div class="row">
+        <table class="table table-border">
+            <thead>
+                <tr>
+                    <th>Product title</th>
+                    <th>Product image</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Remove</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Apple</td>
+                    <td><img src="" alt=""></td>
+                    <td>900</td>
+                    <td><input type="checkbox"></td>
+                    <td>
+                        <p>update</p>
+                        <p>Remove</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- subtotal -->
+        <div class="d-flex mb-3"> 
+            <h4 class="px-3">Subtotal: <strong>5000</strong></h4>
+       <a href="index.php"><button class="bg-info px-3 border-0 py-2">Continue shopping</button></a>
+       <a href="#"><button class="bg-info px-3 border-0 p-3 py-2 mx-3">Checkout</button></a>
+       
+        </div>
     </div>
-    <div class="col-md-2 bg-secondary p-0">
-      <!-- brands to be displayed -->
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item bg-info">
-          <a href="#" class="nav-link text-light text-center">
-            <h4>Delivery brands</h4>
-          </a>
-        </li>
-
-        <?php
-        getBrands();
-        ?>
-        
-      </ul>
-      <!-- catagories to be displayed -->
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item bg-info">
-          <a href="#" class="nav-link text-light text-center">
-            <h4>Catagories</h4>
-          </a>
-        </li>
-
-        <?php
-        getCategories();
-        ?>
-
-      </ul>
-    </div>
-  </div>
-
-  </div>
-
-<!-- include footer -->
-<?php
-    include("./includes/footer.php");
-?>
+</div>
+  <!-- include footer -->
+  <?php
+  include("./includes/footer.php");
+  ?>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>

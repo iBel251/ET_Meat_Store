@@ -42,11 +42,13 @@ include('functions/common_function.php');
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>1</sup></a>
+                            <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php
+              cart_item();
+              ?></sup></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Total Price:/100</a>
-                        </li>
+              <a class="nav-link" href="#">Total Price:<?php total_cart_price();?>/-</a>
+            </li>
 
                     </ul>
                     <form class="form-inline my-2 my-lg-0" action="search_product.php" method="get">
@@ -55,6 +57,10 @@ include('functions/common_function.php');
                     </form>
                 </div>
         </nav>
+
+    <?php
+    cart();    
+    ?>
         <!-- Second child -->
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
