@@ -168,7 +168,7 @@ include('functions/common_function.php');
           if ($result_count > 0) {
             echo "<h4 class='px-3'>Subtotal: <strong>$total_price Birr</strong></h4>
             <input type='submit' value='Continue Shoping' class='bg-info px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
-            <button class='bg-secondary px-3 border-0 p-3 py-2 mx-3'><a href='checkout.php' class='text-light'>Checkout</a></button>";
+            <button class='bg-secondary px-3 border-0 p-3 py-2 mx-3'><a href='./users_area/checkout.php' class='text-light'>Checkout</a></button>";
           }else{
             echo "<input type='submit' value='Continue Shoping' class='bg-info px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
             ";

@@ -1,7 +1,7 @@
 <?php
 
 // include connect file
-include('./includes/connect.php');
+// include('./includes/connect.php');
 // getting unique categories 
 
 function get_unique_categories()

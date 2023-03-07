@@ -1,5 +1,5 @@
 <?php
-include('includes/connect.php');
+include('../includes/connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +29,10 @@ include('includes/connect.php');
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link active" href="../index.php">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="display_all.php">Product</a>
+                            <a class="nav-link" href="../display_all.php">Product</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Register</a>
@@ -72,14 +72,14 @@ include('includes/connect.php');
     <!-- Forth child -->
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <!-- Products -->
             <div class="row">
                 <?php
                 if(!isset($_SESSION['username'])){
-                    include('users_area/user_login.php');
+                    include('user_login.php');
                 }else{
-                    include('payment.php');
+                    include('../payment.php');
                 }
                 ?>
             </div>
@@ -88,7 +88,7 @@ include('includes/connect.php');
 
     <!-- include footer -->
     <?php
-    include("./includes/footer.php");
+    include("../includes/footer.php");
     ?>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
