@@ -91,23 +91,27 @@ include('functions/common_function.php');
     <div class="row">
       <form action="" method="post">
         <table class="table table-border text-center">
-          <thead>
-            <tr>
-              <th>Product title</th>
-              <th>Product image</th>
-              <th>Quantity</th>
-              <th>Total Price</th>
-              <th>Remove</th>
-              <th colspan="2">Operation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- php code to desplay dynamic data -->
-            <?php
-            $get_ip_add = getIPAddress();
-            $total_price = 0;
-            $cart_query = "Select * from `cart_details` where ip_address='$get_ip_add'";
-            $result = mysqli_query($con, $cart_query);
+
+          <!-- php code to desplay dynamic data -->
+          <?php
+          $get_ip_add = getIPAddress();
+          $total_price = 0;
+          $cart_query = "Select * from `cart_details` where ip_address='$get_ip_add'";
+          $result = mysqli_query($con, $cart_query);
+          $result_count = mysqli_num_rows($result);
+          if ($result_count > 0) {
+
+            echo "<thead>
+              <tr>
+                <th>Product title</th>
+                <th>Product image</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Remove</th>
+                <th colspan='2'>Operation</th>
+              </tr>
+            </thead>
+            <tbody>";
             while ($row = mysqli_fetch_array($result)) {
               $product_id = $row['product_id'];
               $select_products = "select * from  `products` where product_id='$product_id'";
@@ -120,15 +124,15 @@ include('functions/common_function.php');
                 $product_values = array_sum($product_price);
                 $total_price += $product_values;
 
-            ?>
+          ?>
                 <tr>
                   <td><?php echo $product_title ?></td>
                   <td><img src="./admin_area/product_images/<?php echo $product_image1 ?>" alt="" class="cart-img"></td>
                   <td><input type="text" name="qty" class="form-input w-50"></td>
                   <?php
-                  
+
                   $get_ip_add = getIPAddress();
-                  if(isset($_POST['update_cart'])){
+                  if (isset($_POST['update_cart'])) {
                     $quantities = intval($_POST['qty']);
                     $update_cart = "update `cart_details` set quantity=$quantities where ip_address='$get_ip_add'";
                     $result_product_qty = mysqli_query($con, $update_cart);
@@ -137,7 +141,7 @@ include('functions/common_function.php');
 
                   ?>
                   <td><?php echo $price_table ?> Birr</td>
-                  <td><input type="checkbox" name="removeitem[]" value="<?php echo $product_id?>"></td>
+                  <td><input type="checkbox" name="removeitem[]" value="<?php echo $product_id ?>"></td>
                   <td>
                     <!-- <button class="bg-info px-3 border-0 p-3 py-2 mx-3">Update</button> -->
                     <input type="submit" value="Update Cart" class="bg-info px-3 border-0 p-3 py-2 mx-3" name="update_cart">
@@ -145,17 +149,36 @@ include('functions/common_function.php');
                     <input type="submit" value="Remove Cart" class="bg-info px-3 border-0 p-3 py-2 mx-3" name="remove_cart">
                   </td>
                 </tr>
-            <?php
+          <?php
               }
             }
-            ?>
+          } else {
+            echo "<h2 class='text-center text-danger'>Cart is empty</h2>";
+          }
+          ?>
           </tbody>
         </table>
         <!-- subtotal -->
-        <div class="d-flex mb-3">
-          <h4 class="px-3">Subtotal: <strong><?php echo $total_price ?> Birr</strong></h4>
-          <a href="index.php"><button class="bg-info px-3 border-0 py-2">Continue shopping</button></a>
-          <a href="#"><button class="bg-info px-3 border-0 p-3 py-2 mx-3">Checkout</button></a>
+        <div class="d-flex mb-5">
+        <?php
+          $get_ip_add = getIPAddress();
+          $cart_query = "Select * from `cart_details` where ip_address='$get_ip_add'";
+          $result = mysqli_query($con, $cart_query);
+          $result_count = mysqli_num_rows($result);
+          if ($result_count > 0) {
+            echo "<h4 class='px-3'>Subtotal: <strong>$total_price Birr</strong></h4>
+            <input type='submit' value='Continue Shoping' class='bg-info px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
+            <button class='bg-secondary px-3 border-0 p-3 py-2 mx-3'><a href='checkout.php' class='text-light'>Checkout</a></button>";
+          }else{
+            echo "<input type='submit' value='Continue Shoping' class='bg-info px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
+            ";
+          }
+          
+          if(isset($_POST['continue_shoping'])){
+            echo "<script>window.open('index.php','_self')</script>";
+          }
+        ?>
+          
 
         </div>
     </div>
@@ -163,21 +186,21 @@ include('functions/common_function.php');
   </form>
 
   <!-- function to remove item  -->
-<?php
+  <?php
 
-global $con;
-if(isset($_POST['remove_cart'])){
-  foreach($_POST['removeitem'] as $remove_id){
-    echo $remove_id;
-    $delete_query = "Delete from `cart_details` where product_id=$remove_id";
-    $run_delete = mysqli_query($con, $delete_query);
-    if($run_delete){
-      echo "<script>window.open('cart.php','_self')</script>";
+  global $con;
+  if (isset($_POST['remove_cart'])) {
+    foreach ($_POST['removeitem'] as $remove_id) {
+      echo $remove_id;
+      $delete_query = "Delete from `cart_details` where product_id=$remove_id";
+      $run_delete = mysqli_query($con, $delete_query);
+      if ($run_delete) {
+        echo "<script>window.open('cart.php','_self')</script>";
+      }
     }
   }
-}
 
-?>
+  ?>
 
   <!-- include footer -->
   <?php
