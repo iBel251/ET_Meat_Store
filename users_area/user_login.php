@@ -27,7 +27,7 @@ include('../functions/common_function.php');
     <div class="container-fluid ">
         <h2 class="text-center">User Login</h2>
         <div class="row d-flex align-items-center justify-content-center">
-            <div class="col-lg-12 col-xl-6">
+            <div class="col-lg-4 col-xl-6">
                 <form action="" method="post">
                     <div class="form-outline mb-4">
                         <label for="user_name" class="form.label">Username</label>

@@ -19,17 +19,16 @@ session_start();
 
   <style>
     body {
-        overflow-x:hidden;
+      overflow-x: hidden;
     }
 
-.profileimg {
-  width: 90%;
-  display: block;
-  margin: auto;
-  height: 100%;
-   }
-
-    </style>
+    .profileimg {
+      width: 90%;
+      display: block;
+      margin: auto;
+      height: 100%;
+    }
+  </style>
 </head>
 
 <body>
@@ -59,12 +58,12 @@ session_start();
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>
-              <?php
-              cart_item();
-              ?></sup></a>
+                  <?php
+                  cart_item();
+                  ?></sup></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Total Price:<?php total_cart_price();?>/-</a>
+              <a class="nav-link" href="#">Total Price:<?php total_cart_price(); ?>/-</a>
             </li>
 
           </ul>
@@ -76,7 +75,7 @@ session_start();
     </nav>
     <!-- calling function cart -->
     <?php
-    cart();    
+    cart();
     ?>
 
     <!-- Second child -->
@@ -84,31 +83,29 @@ session_start();
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <ul class="navbar-nav me-auto">
 
-      <?php
+        <?php
 
-                
-if(!isset($_SESSION['username'])){
-  echo "   <li class='nav-item'>
+
+        if (!isset($_SESSION['username'])) {
+          echo "   <li class='nav-item'>
   <a class='nav-link' href='#'>Welcome Guest</a>
 </li>";
-}
-else {
-  echo "   <li class='nav-item'>
-  <a class='nav-link' href='#'>Welcome ".$_SESSION['username']."</a>
+        } else {
+          echo "   <li class='nav-item'>
+  <a class='nav-link' href='#'>Welcome " . $_SESSION['username'] . "</a>
 </li>";
-}
+        }
 
-                if(!isset($_SESSION['username'])){
-                    echo " <li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo " <li class='nav-item'>
                     <a class='nav-link' href='./users_area/user_login.php'>Login</a>
                 </li>";
-                }
-                else {
-                    echo"  <li class='nav-item'>
+        } else {
+          echo "  <li class='nav-item'>
                     <a class='nav-link' href='./users_area/logout.php'>Logout</a>
                 </li>";
-                }
-                ?>
+        }
+        ?>
       </ul>
     </nav>
   </div>
@@ -120,48 +117,48 @@ else {
   </div>
   <!-- Fourth child -->
   <div class="row">
-    <div class="col-md-2">
-        <div class="col-md-10">
-            <ul class="navbar-nav bg-secondary text-center">
-            <li class="nav-item ">
-              <a class="nav-link text-light" href="#">Your Profile  </a>
-            </li>
+    <div class="col-md-2 p-0">
+      <div class="col-md-12 p-0">
+        <ul class="navbar-nav bg-secondary text-center container-fluid">
+          <li class="nav-item ">
+            <a class="nav-link text-light" href="#">Your Profile </a>
+          </li>
 
-            <?php
-            $username=$_SESSION['username'];
-            $user_image="select * from `user_table` where username='$username'";
-            $user_image=mysqli_query($con,$user_image);
-            $row_image=mysqli_fetch_array($user_image);
-            $user_image=$row_image['user_image'];
-            echo "            <li class='nav-item'>
+          <?php
+          $username = $_SESSION['username'];
+          $user_image = "select * from `user_table` where username='$username'";
+          $user_image = mysqli_query($con, $user_image);
+          $row_image = mysqli_fetch_array($user_image);
+          $user_image = $row_image['user_image'];
+          echo "            <li class='nav-item'>
             <img class='profileimg my-4' src='./user_images/$user_image' alt=''>
           </li>"
 
-            ?>
+          ?>
 
-            <li class="nav-item ">
-              <a class="nav-link text-light" href="profile.php">Pending Orders  </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-light" href="profile.php?edit_account?">Edit Accounts  </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-light" href="profile.ph?my_orders">My Orders  </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link text-light" href="profile.php?delete_account">Delete Account  </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="logout.php">Logout          </a>
-            
-            </li>
-            </ul>
-        </div>
-        <div class="col-md-10">
-            <?php
-            get_user_order_details();
-            ?>
-        </div>
+          <li class="nav-item ">
+            <a class="nav-link text-light" href="profile.php">Pending Orders </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link text-light" href="profile.php?edit_account?">Edit Accounts </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link text-light" href="profile.ph?my_orders">My Orders </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link text-light" href="profile.php?delete_account">Delete Account </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="logout.php">Logout </a>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-10 p-0">
+      <?php
+      get_user_order_details();
+      ?>
     </div>
   </div>
   <!-- include footer -->

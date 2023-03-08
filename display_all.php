@@ -74,7 +74,7 @@ else {
 }
           if(!isset($_SESSION['username'])){
                     echo ' <li class="nav-item">
-                    <a class="nav-link" href="./user_area/user_login.php">Login</a>
+                    <a class="nav-link" href="./users_area/user_login.php">Login</a>
                 </li>';
                 }
                 else {

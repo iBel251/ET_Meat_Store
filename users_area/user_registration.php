@@ -11,7 +11,7 @@ include('../functions/common_function.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User registration</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 </head>
@@ -20,7 +20,7 @@ include('../functions/common_function.php');
     <div class="container-fluid ">
         <h2 class="text-center">New User Registration</h2>
         <div class="row d-flex align-items-center justify-content-center">
-            <div class="col-lg-12 col-xl-6">
+            <div class="col-lg-4 col-xl-6">
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-outline mb-4">
                         <label for="user_name" class="form.label">Username</label>
