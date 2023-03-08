@@ -1,3 +1,7 @@
+<?php
+include('../includes/connect.php');
+include('../functions/common_function.php');
+?>
 <h3 class="text-success text-center">All products</h3>
 <table class="table table-bordered mt-5">
     <thead class="bg-info">
@@ -30,7 +34,7 @@
             $brand_id = $row['brand_id'];
             $status = $row['status'];
             $number++;
-
+        }
         ?>
             <tr class='text-center'>
                 <td><?php echo $number ?></td>
@@ -45,12 +49,12 @@
                     echo $rows_count;
                     ?>
                 </td>
-                <td><?php echo $status ?></td>
-                <td><a href='' class='text-light'><i class='fa-solid fa-pen-to-square'></i></a></td>
+                <td><?php echo $status; ?></td>
+                <td><a href='index.php?edit_products=<?php echo $product_id?>' class='index.php'><i class='fa-solid fa-pen-to-square'></i></a></td>
                 <td><a href='' class='text-light'><i class='fa-solid fa-trash'></i></a></td>
         </tr>
     <?php    
-    }
+   
 
         ?>
 
