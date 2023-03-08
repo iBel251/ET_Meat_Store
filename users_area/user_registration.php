@@ -94,6 +94,7 @@ if (isset($_POST['user_register'])) {
 
         if ($sql_execute) {
             echo "<script>alert('Data inserted successfully')</script>";
+            echo "<script>window.open('user_login.php','_self')</script>";
         } else {
             die(mysqli_error($con));
         }
@@ -109,7 +110,7 @@ if (isset($_POST['user_register'])) {
     echo "<script>window.open('checkout.php','_self')</script>";
   }
   else {
-    echo "<script>window.open('index.php.php','_self')</script>";
+    echo "<script>window.open('index.php','_self')</script>";
   }
 }
 
