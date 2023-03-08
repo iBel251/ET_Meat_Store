@@ -28,6 +28,12 @@ session_start();
       margin: auto;
       height: 100%;
     }
+
+    .edit-image {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+    }
   </style>
 </head>
 
@@ -98,11 +104,11 @@ session_start();
 
         if (!isset($_SESSION['username'])) {
           echo " <li class='nav-item'>
-                    <a class='nav-link' href='./users_area/user_login.php'>Login</a>
+                    <a class='nav-link' href='./user_login.php'>Login</a>
                 </li>";
         } else {
           echo "  <li class='nav-item'>
-                    <a class='nav-link' href='./users_area/logout.php'>Logout</a>
+                    <a class='nav-link' href='./logout.php'>Logout</a>
                 </li>";
         }
         ?>
@@ -140,10 +146,10 @@ session_start();
             <a class="nav-link text-light" href="profile.php">Pending Orders </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link text-light" href="profile.php?edit_account?">Edit Accounts </a>
+            <a class="nav-link text-light" href="profile.php?edit_account">Edit Accounts </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link text-light" href="profile.ph?my_orders">My Orders </a>
+            <a class="nav-link text-light" href="profile.php?my_orders">My Orders </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link text-light" href="profile.php?delete_account">Delete Account </a>
@@ -155,9 +161,15 @@ session_start();
         </ul>
       </div>
     </div>
-    <div class="col-md-10 p-0">
+    <div class="col-md-10 p-0 text-center">
       <?php
       get_user_order_details();
+      if(isset($_GET['edit_account'])){
+        include('edit_account.php');
+      }
+      if(isset($_GET['my_orders'])){
+        include('user_orders.php');
+      }
       ?>
     </div>
   </div>
