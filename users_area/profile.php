@@ -143,18 +143,24 @@ else {
               <a class="nav-link text-light" href="profile.php">Pending Orders  </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-light" href="profile.php?editaccount?">Edit Accounts  </a>
+              <a class="nav-link text-light" href="profile.php?edit_account?">Edit Accounts  </a>
             </li>
             <li class="nav-item ">
               <a class="nav-link text-light" href="profile.ph?my_orders">My Orders  </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-light" href="profile.php?delete_acount">Delete Account  </a>
+              <a class="nav-link text-light" href="profile.php?delete_account">Delete Account  </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="logout.php">Logout  </a>
+              <a class="nav-link text-light" href="logout.php">Logout          </a>
+            
             </li>
             </ul>
+        </div>
+        <div class="col-md-10">
+            <?php
+            get_user_order_details();
+            ?>
         </div>
     </div>
   </div>
