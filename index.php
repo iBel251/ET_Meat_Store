@@ -19,10 +19,9 @@ session_start();
 
   <style>
     body {
-        overflow-x:hidden;
+      overflow-x: hidden;
     }
-
-    </style>
+  </style>
 </head>
 
 <body>
@@ -44,20 +43,28 @@ session_start();
             <li class="nav-item">
               <a class="nav-link" href="display_all.php">Product</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./users_area/user_registration.php">Register</a>
-            </li>
+            <?php
+            if (isset($_SESSION['username'])) {
+              echo "<li class='nav-item'>
+              <a class='nav-link' href='./users_area/profile.php'>My Account</a>
+            </li> ";
+            } else {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='./users_area/user_registration.php'>Register</a>
+          </li> ";
+            }
+            ?>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>
-              <?php
-              cart_item();
-              ?></sup></a>
+                  <?php
+                  cart_item();
+                  ?></sup></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Total Price:<?php total_cart_price();?>/-</a>
+              <a class="nav-link" href="#">Total Price:<?php total_cart_price(); ?>/-</a>
             </li>
 
           </ul>
@@ -69,7 +76,7 @@ session_start();
     </nav>
     <!-- calling function cart -->
     <?php
-    cart();    
+    cart();
     ?>
 
     <!-- Second child -->
@@ -77,31 +84,29 @@ session_start();
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
       <ul class="navbar-nav me-auto">
 
-      <?php
+        <?php
 
-                
-if(!isset($_SESSION['username'])){
-  echo "   <li class='nav-item'>
+
+        if (!isset($_SESSION['username'])) {
+          echo "   <li class='nav-item'>
   <a class='nav-link' href='#'>Welcome Guest</a>
 </li>";
-}
-else {
-  echo "   <li class='nav-item'>
-  <a class='nav-link' href='#'>Welcome ".$_SESSION['username']."</a>
+        } else {
+          echo "   <li class='nav-item'>
+  <a class='nav-link' href='#'>Welcome " . $_SESSION['username'] . "</a>
 </li>";
-}
+        }
 
-                if(!isset($_SESSION['username'])){
-                    echo " <li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo " <li class='nav-item'>
                     <a class='nav-link' href='./users_area/user_login.php'>Login</a>
                 </li>";
-                }
-                else {
-                    echo"  <li class='nav-item'>
+        } else {
+          echo "  <li class='nav-item'>
                     <a class='nav-link' href='./users_area/logout.php'>Logout</a>
                 </li>";
-                }
-                ?>
+        }
+        ?>
       </ul>
     </nav>
   </div>
