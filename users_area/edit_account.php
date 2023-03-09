@@ -26,7 +26,8 @@ if(isset($_GET['edit_account'])){
         user_address='$user_address',user_mobile='$user_mobile' where user_id=$update_id";
         $result_query_update = mysqli_query($con,$update_data);
         if($result_query_update){
-            //echo "<script>alert('Data updated successfully')</script>";
+            echo "<script>alert('Account updated successfully')</script>";
+            echo "<script>window.open('./profile.php?edit_account','_self')</script>";
         }
     }
 }
