@@ -388,7 +388,7 @@ function get_user_order_details()
           $row_count = mysqli_num_rows($result_orders_query);
           if ($row_count > 0) {
             echo "<h3 class='text-center text-success mt-5 mb-2'>You have <span class='text-danger'>$row_count</span> pending orders </h3>
-       <p class='text-center'><a href='profile.php?my_orders'>Order Details</a></p>";
+       <p class='text-center'><a href='profile.php?my_orders' class='btn btn-success'>Order Details</a></p>";
           } else {
             echo "<h3 class='text-center text-success mt-5 mb-2'>You have zero pending orders </h3>
        <p class='text-center'><a href='../index.php'>Explore products</a></p>";

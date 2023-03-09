@@ -1,15 +1,35 @@
 body {
   overflow-x: hidden;
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+img {
+  max-height: 200px;
+  object-fit: contain;
+}
+
+h6 {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  padding-bottom: 5px;
+  text-align: left;
+  font-weight: bold;
+}
+
 .logo {
-    width: 5%;
-    height: 5%;
+  width: 5%;
+  height: 5%;
+  margin-right: 10px;
+}
+
+a, a:hover {
+  color : white;
+  text-decoration: none;
 }
 
 footer {
@@ -24,9 +44,73 @@ footer {
 .cart-img {
   width: 80px;
   height: 80px;
+  object-fit: contain;
 }
 
 .product_image{
   width: 100px;
   object-fit:contain;
+}
+
+.profileimg {
+  width: 90%;
+  display: block;
+  margin: auto;
+  height: 100%;
+}
+
+.edit-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.hv-questions{
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+  text-align: center;
+  font-weight: bold;
+}
+
+.phone {
+  color: rgb(158, 35, 35);
+}
+
+h2 span {
+  color: brown;
+  font-size: 24px;
+  font-family: cursive;
+}
+
+.fot-2nd {
+  margin-top: 8px;
+}
+
+.et {
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.footer {
+  position: relative;
+}
+
+.footer li {
+  font-size: 12px;
+  color: lightgray;
+}
+
+.footer-last {
+  background-color: black;
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
