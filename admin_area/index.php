@@ -62,7 +62,7 @@ include('../includes/connect.php');
           <p class="text-light text-center">Admin Name</p>
         </div>
         <div class="button text-center">
-          <button class="ml-5"><a href="insert_product.php" class="nav-link text-light bg-info my-1">Insert Products</a></button>
+          <button class="ml-5"><a href="index.php?insert_products" class="nav-link text-light bg-info my-1">Insert Products</a></button>
           <button><a href="index.php?view_products" class="nav-link text-light bg-info my-1">View Products</a></button>
           <button><a href="index.php?insert_category" class="nav-link text-light bg-info my-1">Insert Categories</a></button>
           <button><a href="" class="nav-link text-light bg-info my-1">View Categories</a></button>
@@ -79,6 +79,9 @@ include('../includes/connect.php');
     <!-- Forth child -->
     <div class="container my-5">
       <?php
+      if (isset($_GET['insert_products'])) {
+        include('insert_product.php');
+      }
       if (isset($_GET['insert_category'])) {
         include('insert_categories.php');
       }

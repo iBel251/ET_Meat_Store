@@ -34,7 +34,6 @@ include('../functions/common_function.php');
             $brand_id = $row['brand_id'];
             $status = $row['status'];
             $number++;
-        }
         ?>
             <tr class='text-center'>
                 <td><?php echo $number ?></td>
@@ -43,21 +42,21 @@ include('../functions/common_function.php');
                 <td><?php echo $product_price ?></td>
                 <td>
                     <?php
-                    $get_count="select * from `orders_pending` where product_id=$product_id";
-                    $result_count = mysqli_query($con,$get_count);
+                    $get_count = "select * from `orders_pending` where product_id=$product_id";
+                    $result_count = mysqli_query($con, $get_count);
                     $rows_count = mysqli_num_rows($result_count);
                     echo $rows_count;
                     ?>
                 </td>
                 <td><?php echo $status; ?></td>
-                <td><a href='index.php?edit_products=<?php echo $product_id?>' class='index.php'><i class='fa-solid fa-pen-to-square'></i></a></td>
+                <td><a href='index.php?edit_products=<?php echo $product_id ?>' class='index.php'><i class='fa-solid fa-pen-to-square'></i></a></td>
                 <td><a href='' class='text-light'><i class='fa-solid fa-trash'></i></a></td>
-        </tr>
-    <?php    
-   
+            </tr>
+        <?php
+        }
+
 
         ?>
 
     </tbody>
 </table>
-

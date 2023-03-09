@@ -43,10 +43,13 @@ session_start();
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>1</sup></a>
+              <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup>
+                  <?php
+                  cart_item();
+                  ?></sup></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Total Price:<?php total_cart_price();?>/-</a>
+              <a class="nav-link" href="#">Total Price:<?php total_cart_price(); ?>/-</a>
             </li>
 
           </ul>
@@ -62,27 +65,25 @@ session_start();
       <ul class="navbar-nav me-auto">
 
         <?php
-if(!isset($_SESSION['username'])){
-  echo "   <li class='nav-item'>
+        if (!isset($_SESSION['username'])) {
+          echo "   <li class='nav-item'>
   <a class='nav-link' href='#'>Welcome Guest</a>
 </li>";
-}
-else {
-  echo "   <li class='nav-item'>
-  <a class='nav-link' href='#'>Welcome ".$_SESSION['username']."</a>
+        } else {
+          echo "   <li class='nav-item'>
+  <a class='nav-link' href='#'>Welcome " . $_SESSION['username'] . "</a>
 </li>";
-}
-          if(!isset($_SESSION['username'])){
-                    echo ' <li class="nav-item">
+        }
+        if (!isset($_SESSION['username'])) {
+          echo ' <li class="nav-item">
                     <a class="nav-link" href="./users_area/user_login.php">Login</a>
                 </li>';
-                }
-                else {
-                    echo ' <li class="nav-item">
+        } else {
+          echo ' <li class="nav-item">
                     <a class="nav-link" "./user_area/logout.php">Logout</a>
                 </li>';
-                }
-                ?>
+        }
+        ?>
       </ul>
     </nav>
   </div>
@@ -121,7 +122,7 @@ else {
         <?php
         getBrands();
         ?>
-        
+
       </ul>
       <!-- catagories to be displayed -->
       <ul class="navbar-nav me-auto">
@@ -141,10 +142,10 @@ else {
 
   </div>
 
-<!-- include footer -->
-<?php
-    include("./includes/footer.php");
-?>
+  <!-- include footer -->
+  <?php
+  include("./includes/footer.php");
+  ?>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>
