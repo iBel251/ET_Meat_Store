@@ -12,57 +12,19 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PhpCode</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <style>
-    .cart-img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-    }
-  </style>
+  <link rel="stylesheet" href="./style.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
   <div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <?php
 
-      <div class="container-fluid p-0">
-        <img src="./images/AnimalPrductLogo.png" alt="" class="logo">
+    $current_page = 'cart';
+    include('includes/header.php');
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.php">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="display_all.php">Product</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./users_area/user_registration.php">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i><sup><?php
-                                                                                                              cart_item();
-                                                                                                              ?></sup></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Total Price:<?php total_cart_price(); ?>/-</a>
-            </li>
-
-          </ul>
-
-        </div>
-    </nav>
+    ?>
     <!-- calling function cart -->
     <?php
     cart();
@@ -70,35 +32,7 @@ session_start();
 
     <!-- Second child -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-      <ul class="navbar-nav me-auto">
-      <?php
-        if(!isset($_SESSION['username'])){
-          echo "   <li class='nav-item'>
-          <a class='nav-link' href='#'>Welcome Guest</a>
-        </li>";
-        }
-        else {
-          echo "   <li class='nav-item'>
-          <a class='nav-link' href='#'>Welcome ".$_SESSION['username']."</a>
-        </li>";
-        }
-                if(!isset($_SESSION['username'])){
-                    echo ' <li class="nav-item">
-                    <a class="nav-link" href="./users_area/user_login.php">Login</a>
-                </li>';
-                }
-                else {
-                    echo ' <li class="nav-item">
-                    <a class="nav-link" "./user_area/logout.php">Logout</a>
-                </li>';
-                }
-                ?>
 
-
-                
-      </ul>
-    </nav>
   </div>
 
   <!-- Third child -->
@@ -110,7 +44,7 @@ session_start();
   <div class="container">
     <div class="row">
       <form action="" method="post">
-        <table class="table table-border text-center">
+        <table class="table table-bordered text-center">
 
           <!-- php code to desplay dynamic data -->
           <?php
@@ -163,10 +97,8 @@ session_start();
                   <td><?php echo $price_table ?> Birr</td>
                   <td><input type="checkbox" name="removeitem[]" value="<?php echo $product_id ?>"></td>
                   <td>
-                    <!-- <button class="bg-info px-3 border-0 p-3 py-2 mx-3">Update</button> -->
-                    <input type="submit" value="Update Cart" class="bg-info px-3 border-0 p-3 py-2 mx-3" name="update_cart">
-                    <!-- <button class="bg-info px-3 border-0 p-3 py-2 mx-3">Remove</button> -->
-                    <input type="submit" value="Remove Cart" class="bg-info px-3 border-0 p-3 py-2 mx-3" name="remove_cart">
+                    <input type="submit" value="Update" class="text-light bg-dark px-3 border-0 p-3 py-2 mx-3" name="update_cart">
+                    <input type="submit" value="Remove" class="bg-danger px-3 border-0 p-3 py-2 mx-2" name="remove_cart">
                   </td>
                 </tr>
           <?php
@@ -180,25 +112,25 @@ session_start();
         </table>
         <!-- subtotal -->
         <div class="d-flex mb-5">
-        <?php
+          <?php
           $get_ip_add = getIPAddress();
           $cart_query = "Select * from `cart_details` where ip_address='$get_ip_add'";
           $result = mysqli_query($con, $cart_query);
           $result_count = mysqli_num_rows($result);
           if ($result_count > 0) {
             echo "<h4 class='px-3'>Subtotal: <strong>$total_price Birr</strong></h4>
-            <input type='submit' value='Continue Shoping' class='bg-info px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
-            <button class='bg-secondary px-3 border-0 p-3 py-2 mx-3'><a href='./users_area/checkout.php' class='text-light'>Checkout</a></button>";
-          }else{
-            echo "<input type='submit' value='Continue Shoping' class='bg-info px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
+            <input type='submit' value='Continue Shoping' class='text-light bg-dark px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
+            <button class='bg-success px-3 border-0 p-3 py-2 mx-3'><a href='./users_area/checkout.php' class='text-light'>Checkout</a></button>";
+          } else {
+            echo "<input type='submit' value='Continue Shoping' class='bg-dark px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
             ";
           }
-          
-          if(isset($_POST['continue_shoping'])){
+
+          if (isset($_POST['continue_shoping'])) {
             echo "<script>window.open('index.php','_self')</script>";
           }
-        ?>
-          
+          ?>
+
 
         </div>
     </div>
