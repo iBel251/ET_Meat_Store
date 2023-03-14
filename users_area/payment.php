@@ -30,14 +30,14 @@ $get_user="select * from `user_table` where user_ip='$user_ip'";
 $result=mysqli_query($con,$get_user);
 $run_query=mysqli_fetch_array($result);
 $user_id=$run_query['user_id'];
-
+$order_id = 1;
 ?>
 
     <div class="container">
         <h2 class="text-center text-info">Payment info</h2>
         <div class="row d-flex justify-content-center align-items-center my-5">
             <div class="col-md-6">
-            <a href="http://www.paypal.com"><img src="../images/yenepay_logo.png" alt=""></a>
+            <a href='payment/yenepay.php?user_ip=<?php echo $user_ip?>'><img src="../images/yenepay_logo.png" alt=""></a>
        
             </div>
             <div class="col-md-6">

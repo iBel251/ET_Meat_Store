@@ -45,7 +45,7 @@
                             ?></sup></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Total Price: <?php total_cart_price(); ?> Birr</a>
+                    <a class="nav-link disabled" href="#">Total Price: <?php echo total_cart_price(); ?> Birr</a>
                 </li>
 
             </ul>

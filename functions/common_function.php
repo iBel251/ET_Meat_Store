@@ -318,12 +318,10 @@ function cart()
     $result_query = mysqli_query($con, $select_query);
     $num_of_rows = mysqli_num_rows($result_query);
     if ($num_of_rows > 0) {
-      echo "<script>alert('This item is already in cart')</script>";
       echo "<script>window.open('index.php','_self')</script>";
     } else {
-      $insert_query = "insert into `cart_details` (product_id,ip_address,quantity) values ($get_product_id,'$get_ip_add',0)";
+      $insert_query = "insert into `cart_details` (product_id,ip_address,quantity) values ($get_product_id,'$get_ip_add',1)";
       $result_query = mysqli_query($con, $insert_query);
-      echo "<script>alert('This item is added to cart')</script>";
       echo "<script>window.open('index.php','_self')</script>";
     }
   }
@@ -351,7 +349,7 @@ function cart_item()
   echo "$count_cart_itmes";
 }
 // Total cart price
-function total_cart_price()
+function total_cart_price2()
 {
   global $con;
   $get_ip_add = getIPAddress();
@@ -360,6 +358,7 @@ function total_cart_price()
   $result = mysqli_query($con, $cart_query);
   while ($row = mysqli_fetch_array($result)) {
     $product_id = $row['product_id'];
+    $qty = $row['quantity'];
     $select_products = "select * from  `products` where product_id='$product_id'";
     $result_products = mysqli_query($con, $select_products);
     while ($row_product_price = mysqli_fetch_array($result_products)) {
@@ -369,6 +368,23 @@ function total_cart_price()
     }
   }
   echo $total_price;
+}
+function total_cart_price()
+{
+  global $con;
+  $get_ip_add = getIPAddress();
+  $total_price = 0;
+  $cart_query = "SELECT cart_details.quantity, products.product_price
+  FROM cart_details
+  INNER JOIN products ON cart_details.product_id=products.product_id where ip_address='$get_ip_add'";
+  $result = mysqli_query($con, $cart_query);
+  while ($row = mysqli_fetch_array($result)){
+    $price = $row['product_price'];
+    $quantity = $row['quantity'];
+    $item_price = $price*$quantity;
+    $total_price += $item_price;
+  }
+  return $total_price;
 }
 
 // get user order details

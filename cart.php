@@ -60,7 +60,7 @@ session_start();
                 <th>Product title</th>
                 <th>Product image</th>
                 <th>Quantity</th>
-                <th>Total Price</th>
+                <th>Price</th>
                 <th>Remove</th>
                 <th colspan='2'>Operation</th>
               </tr>
@@ -68,6 +68,7 @@ session_start();
             <tbody>";
             while ($row = mysqli_fetch_array($result)) {
               $product_id = $row['product_id'];
+              $quantity = $row['quantity'];
               $select_products = "select * from  `products` where product_id='$product_id'";
               $result_products = mysqli_query($con, $select_products);
               while ($row_product_price = mysqli_fetch_array($result_products)) {
@@ -82,7 +83,13 @@ session_start();
                 <tr>
                   <td><?php echo $product_title ?></td>
                   <td><img src="./admin_area/product_images/<?php echo $product_image1 ?>" alt="" class="cart-img"></td>
-                  <td><input type="text" name="qty" class="form-input w-50"></td>
+                  <td>
+                    <input class="qty-cart" type="number" value=<?php echo $quantity ?> disabled><br>
+                    <form action="" method="post">
+                      <button class="btn" type="submit" name="qty_inc" value=<?php echo $product_id ?>><i class="fa-solid fa-arrow-up"></i></button>
+                      <button class="btn" type="submit" name="qty_dec" value=<?php echo $product_id ?>><i class="fa-solid fa-arrow-down"></i></button>
+                    </form>
+                  </td>
                   <?php
 
                   $get_ip_add = getIPAddress();
@@ -117,8 +124,9 @@ session_start();
           $cart_query = "Select * from `cart_details` where ip_address='$get_ip_add'";
           $result = mysqli_query($con, $cart_query);
           $result_count = mysqli_num_rows($result);
+          $cart_price = total_cart_price();
           if ($result_count > 0) {
-            echo "<h4 class='px-3'>Subtotal: <strong>$total_price Birr</strong></h4>
+            echo "<h4 class='px-3'>Subtotal: <strong>$cart_price Birr</strong></h4>
             <input type='submit' value='Continue Shoping' class='text-light bg-dark px-3 border-0 p-3 py-2 mx-3' name='continue_shoping'>
             <button class='bg-success px-3 border-0 p-3 py-2 mx-3'><a href='./users_area/checkout.php' class='text-light'>Checkout</a></button>";
           } else {
@@ -152,12 +160,46 @@ session_start();
     }
   }
 
+  if (isset($_POST['qty_inc'])) {
+    $product_id = $_POST['qty_inc'];
+    $cart_query = "Select quantity from `cart_details` where product_id='$product_id'";
+    $result = mysqli_query($con, $cart_query);
+    $row = mysqli_fetch_array($result);
+    $quantity = $row['quantity'];
+    if ($quantity > 0) {
+
+      $query = "update cart_details set quantity=quantity + 1 where product_id=$product_id";
+      $run = mysqli_query($con, $query);
+      if ($run) {
+
+        echo "<script>window.open('cart.php','_self')</script>";
+      }
+    }
+  } elseif (isset($_POST['qty_dec'])) {
+    $product_id = $_POST['qty_dec'];
+    $cart_query = "Select quantity from `cart_details` where product_id='$product_id'";
+    $result = mysqli_query($con, $cart_query);
+    $row = mysqli_fetch_array($result);
+    $quantity = $row['quantity'];
+    if ($quantity > 1) {
+      $query = "update cart_details set quantity=quantity - 1 where product_id=$product_id";
+      $run = mysqli_query($con, $query);
+      if ($run) {
+        echo "<script>window.open('cart.php','_self')</script>";
+      }
+    }
+  }
   ?>
 
   <!-- include footer -->
   <?php
   include("./includes/footer.php");
   ?>
+  <script>
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>

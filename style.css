@@ -114,3 +114,15 @@ li {
   left: 0;
   width: 100%;
 }
+
+.qty-cart {
+  width: 50px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn {
+  width: fit-content;
+  padding: 5px;
+  margin: 0;
+}
