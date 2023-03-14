@@ -60,12 +60,3 @@ $insert_pending_orders="insert into `orders_pending`
 
 $empty_cart="Delete from `cart_details` where ip_address='$get_ip_address'";
 $result_delete=mysqli_query($con,$empty_cart);
-
-
-
-
-
-?>
-
-
-

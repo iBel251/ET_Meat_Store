@@ -1,6 +1,5 @@
 <?php
 include('../includes/connect.php');
-include('../functions/common_function.php');
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +37,11 @@ $user_id=$run_query['user_id'];
         <h2 class="text-center text-info">Payment info</h2>
         <div class="row d-flex justify-content-center align-items-center my-5">
             <div class="col-md-6">
-            <a href="http://www.paypal.com"><img src="./user_images/paypal.png" alt=""></a>
+            <a href="http://www.paypal.com"><img src="../images/yenepay_logo.png" alt=""></a>
        
             </div>
             <div class="col-md-6">
-            <a href="order.php?user_id=<?php echo $user_id?>"><img src="" alt=""><h2 class="text-center">Pay Offline</h2></a>
+            <a href="order.php?user_id=<?php echo $user_id?>"><img src="" alt=""><h2 class="text-center">Pay later</h2></a>
        
             </div>
          </div>

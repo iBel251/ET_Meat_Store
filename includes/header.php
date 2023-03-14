@@ -86,7 +86,3 @@
         ?>
     </ul>
 </nav>
-
-<style>
-
-</style>
