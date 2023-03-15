@@ -74,14 +74,14 @@ if (isset($_POST['insert_product'])) {
             <!-- description -->
             <div class="form-outline w-50 m-auto mb-4">
                 <label for="product_description" class="forml-abel">Product description</label>
-                <input type="text" name="product_description" id="product_description" class="form-control" placeholder="Enter product title" autocomplete="off" require="required">
+                <input type="text" name="product_description" id="product_description" class="form-control" placeholder="Enter product description" autocomplete="off" require="required">
             </div>
 
             <!-- Keywords -->
 
             <div class="form-outline pb-4 w-50 m-auto">
                 <label for="product_Keywords" class="forml-abel">Product Keywords</label>
-                <input type="text" name="product_Keywords" id="product_Keywords" class="form-control" placeholder="Enter product title" autocomplete="off" require="required">
+                <input type="text" name="product_Keywords" id="product_Keywords" class="form-control" placeholder="Enter product keywords" autocomplete="off" require="required">
             </div>
 
             <!-- categories -->
